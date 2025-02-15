@@ -2,7 +2,7 @@ import pLimit from "p-limit";
 import pRetry from "p-retry";
 import pThrottle from "p-throttle";
 
-type RateLimitConfig = {
+export type RateLimitConfig = {
     concurrency: number;
     requestsPerInterval: number;
     intervalMs: number;
@@ -61,7 +61,6 @@ export class RateLimitManager<Service extends string = string> {
             throw new Error(`No rate limit configured for service: ${service}`);
         }
         this.#addService(service, config);
-        console.log(`[RateLimitManager] Updated service: ${service}`);
     }
     /**
      * Returns the number of pending tasks for a service.
@@ -83,6 +82,5 @@ export class RateLimitManager<Service extends string = string> {
         );
         this.limiters.set(service as unknown as Service, pLimit(config.concurrency));
         this.configs.set(service as unknown as Service, config);
-        console.log(`[RateLimitManager] Added service: ${service}`);
     }
 }
