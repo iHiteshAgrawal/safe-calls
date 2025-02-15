@@ -1,0 +1,50 @@
+{
+  "name": "safe-calls",
+  "version": "1.0.1",
+  "description": "A simple rate limit and retry manager",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "start": "node dist/index.js",
+    "dev": "tsup src/**/*.ts --watch --onSuccess \"node dist/index.js\"",
+    "prepublishOnly": "npm run build",
+    "test": "tsup tests/*.ts dist/tests --onSuccess \"node dist/index.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iHiteshAgrawal/safe-calls"
+  },
+  "files": [
+    "dist"
+  ],
+  "tsup": {
+    "entry": [
+      "src/**/*.ts"
+    ],
+    "clean": true,
+    "format": "esm",
+    "dts": true
+  },
+  "keywords": [
+    "rate-limit",
+    "retry",
+    "async",
+    "p-limit",
+    "p-retry",
+    "p-throttle"
+  ],
+  "author": "https://github.com/iHiteshAgrawal",
+  "license": "MIT",
+  "dependencies": {
+    "p-limit": "6.2.0",
+    "p-retry": "6.2.1",
+    "p-throttle": "7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.4",
+    "tsup": "8.3.6",
+    "typescript": "5.7.3"
+  }
+}
