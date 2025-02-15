@@ -20,7 +20,7 @@ npm install safe-calls
 ### Import and Initialize
 
 ```ts
-import RateLimitManager from "safe-calls";
+import { RateLimitManager } from "safe-calls";
 
 const rateLimitManager = new RateLimitManager({
   apiX: {
